@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 
 public class PayrollCalculator {
     public static void main(String[] args) {
-        FileReader FileReader;
                 try {
                     FileReader fileReader = new FileReader("C:/Users/mahle/pluralsight/Workbook-3/DataFiles/employees.csv/");
                     BufferedReader reader = new BufferedReader(fileReader);
