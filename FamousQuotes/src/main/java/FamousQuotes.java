@@ -23,32 +23,32 @@ public class FamousQuotes {
                 for (int i = 0; i < Quotes.length; i++) {
                     System.out.println((i + 1) + ":" + Quotes[i]);
                 }
-                System.out.println("Choose a number between 1 and 10 to select your quote: ");
+                System.out.println("Choose a number between 1 and 10 to see who wrote the quote: ");
                 int quote = input.nextInt();
                 input.nextLine();
                 switch (quote) {
                     case 1:
-                        System.out.println(Quotes[0] + "\n"+authors[0]);
+                        System.out.println(Quotes[0] + "\n"+authors[0]);break;
                     case 2:
-                        System.out.println(Quotes[1] + "\n"+authors[1]);
+                        System.out.println(Quotes[1] + "\n"+authors[1]);break;
                     case 3:
-                        System.out.println(Quotes[2] + "\n"+authors[2]);
+                        System.out.println(Quotes[2] + "\n"+authors[2]);break;
                     case 4:
-                        System.out.println(Quotes[3] + "\n"+authors[3]);
+                        System.out.println(Quotes[3] + "\n"+authors[3]);break;
                     case 5:
-                        System.out.println(Quotes[4] + "\n"+authors[4]);
+                        System.out.println(Quotes[4] + "\n"+authors[4]);break;
                     case 6:
-                        System.out.println(Quotes[5] + "\n"+authors[5]);
+                        System.out.println(Quotes[5] + "\n"+authors[5]);break;
                     case 7:
-                        System.out.println(Quotes[6] + "\n"+authors[6]);
+                        System.out.println(Quotes[6] + "\n"+authors[6]);break;
                     case 8:
-                        System.out.println(Quotes[7] + "\n"+authors[7]);
+                        System.out.println(Quotes[7] + "\n"+authors[7]);break;
                     case 9:
-                        System.out.println(Quotes[8] + "\n"+authors[8]);
+                        System.out.println(Quotes[8] + "\n"+authors[8]);break;
                     case 10:
-                        System.out.println(Quotes[9] + "\n"+authors[9]);
+                        System.out.println(Quotes[9] + "\n"+authors[9]);break;
                     case 11:
-                        System.out.println("Random Quote:\n"+Quotes[randomIndex]);
+                        System.out.println("Random Quote:\n"+Quotes[randomIndex]+"\n"+authors[randomIndex]);break;
                 }
                 System.out.println("do you want to see another quote?");
                 String again=input.nextLine();
