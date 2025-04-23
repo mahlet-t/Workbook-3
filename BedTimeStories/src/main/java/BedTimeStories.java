@@ -13,7 +13,7 @@ public class BedTimeStories {
             System.out.println("\nEnter the name of the story to read:");
             String filename = input.nextLine();
             try {
-                File file = new File("DataFiles/" + filename);
+                File file = new File("../DataFiles/" + filename);
                 Scanner fileReader = new Scanner(file);
                 int lineNumber = 1;
                 while (fileReader.hasNextLine()) {
@@ -27,6 +27,8 @@ public class BedTimeStories {
             } catch (FileNotFoundException e) {
                 System.out.println("sorry,that file was not found.");
             }
+
+
         }
     }
 }
