@@ -29,11 +29,11 @@ public class PayrollCalculator {
                 double rate = Double.parseDouble(parts[3]);
                 Employee emp = new Employee(id, name, hours, rate);
                 if (isJson) {
-                    // write in JSON format
+                    // JSON format
                     writer.write(String.format("{ \"id\": %d, \"name\": \"%s\", \"grossPay\": %.2f },\n",
                             emp.getEmployeeId(), emp.getName(), emp.calculateGrossPay()));
                 } else {
-                    // write in CSV format
+                    //  CSV format
                     writer.write(emp.getEmployeeId() + "|" + emp.getName() + "|" +
                             String.format("%.2f", emp.calculateGrossPay()) + "\n");
                 }

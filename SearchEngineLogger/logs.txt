@@ -1,3 +1,6 @@
 2025-04-23 14:26:43 launch
 2025-04-23 14:27:03 search: how can i use chat gpt
 2025-04-23 14:27:10 exit
+2025-04-23 15:03:12 launch
+2025-04-23 15:04:03 search: how to use ChatGpt and Gemni
+2025-04-23 15:04:07 exit
