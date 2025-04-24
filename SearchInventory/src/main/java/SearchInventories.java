@@ -69,16 +69,16 @@ public class SearchInventories {
     //..............................................................
    public static  ArrayList<product> getInventory(){
         ArrayList<product> inventory=new ArrayList<>();
-        try {
-       BufferedReader reader =new  BufferedReader(new FileReader("../DataFiles/inventory.csv"));
-       String line;
-       while ((line= reader.readLine())!=null){
-           String[] parts=line.split("\\|");
-           int id =Integer.parseInt(parts[0]);
-           String name=parts[1];
-           double price=Double.parseDouble( parts[2]);
-           inventory.add(new product(id,name,price));
-       }
+       try {
+           BufferedReader reader =new  BufferedReader(new FileReader("../DataFiles/inventory.csv"));
+           String line;
+           while ((line= reader.readLine())!=null){
+               String[] parts=line.split("\\|");
+               int id =Integer.parseInt(parts[0]);
+               String name=parts[1];
+               double price=Double.parseDouble( parts[2]);
+               inventory.add(new product(id,name,price));
+           }
        reader.close();
        inventory.sort((p1,p2)->p1.getName().compareToIgnoreCase(p2.getName()));
 
