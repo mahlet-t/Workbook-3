@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Cart {
+
    private Map<product,Integer>cartItems=new HashMap<>();
    public void addNewProduct(ArrayList<product> products, Scanner input){
       System.out.println("Enter product Name");
@@ -66,7 +67,9 @@ public class Cart {
          System.out.println("Product not found in the cart");
       }
 
+
    }
+
    public void checkOut(Scanner input){
       double total=0;
       for (product p:cartItems.keySet()){
@@ -111,6 +114,15 @@ public class Cart {
          checkOut(input);
       }
    }
+   public static void cartDisplay(ArrayList<product> products,Scanner input) {
+      System.out.println("Choose from the following");
+      System.out.println("1 Add item to cart");
+      System.out.println("2 remove item ");
+      System.out.println("3checkout");
+      int choose = input.nextInt();
+      input.nextLine();
 
 
+
+   }
 }

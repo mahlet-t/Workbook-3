@@ -11,17 +11,44 @@ public class OnlineStore {
         cart.addNewProduct(products,input);
         cart.removeProduct(input);
         cart.checkOut(input);
-        System.out.println("wellcome to online store\n Choose number ");
+        System.out.println("well come to online store\n Choose number ");
         System.out.println("1 Display product");
-        System.out.println(" 2 Display cart");
+        System.out.println("2 Display cart");
         System.out.println("3 Exit");
         int choose=input.nextInt();
         input.nextLine();
+        switch (choose){
+            case 1:options(products,input);
+            case 2:
 
+
+        }
 
 
 
     }
+    public static void options(ArrayList<product>products,Scanner input){
+        System.out.println("Choose");
+        System.out.println("1 list all product");
+        System.out.println("2 search by name");
+        System.out.println("3 search by price ");
+        System.out.println("4 search by department");
+        System.out.println("5 go back main menu");
+        int option=input.nextInt();
+        input.nextLine();
+        switch (option){
+            case 1:listAllProduct(products);break;
+            case 2:SearchByName(products,input);break;
+            case 3:searchByPrice(products,input);break;
+            case 4:SearchByDepartment(products,input);break;
+            case 5:options(products,input);break;
+
+
+        }
+
+    }
+
+
 
     public static ArrayList<product> getInventory() {
         ArrayList<product> products = new ArrayList<>();
