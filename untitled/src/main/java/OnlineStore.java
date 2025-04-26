@@ -11,6 +11,14 @@ public class OnlineStore {
         cart.addNewProduct(products,input);
         cart.removeProduct(input);
         cart.checkOut(input);
+        System.out.println("wellcome to online store\n Choose number ");
+        System.out.println("1 Display product");
+        System.out.println(" 2 Display cart");
+        System.out.println("3 Exit");
+        int choose=input.nextInt();
+        input.nextLine();
+
+
 
 
     }
@@ -65,7 +73,7 @@ public class OnlineStore {
             double price=P.getPrice();
 
             if (price<=Max&& price>=Min){
-                System.out.println("Found: ");
+                System.out.println("Found: "+P);
             }
             else {
                 System.out.println("Not Found");
@@ -78,7 +86,7 @@ public class OnlineStore {
         String D=input.nextLine();
         for (product P:products){
             if (P.getDepartment().equalsIgnoreCase(D)){
-                System.out.println("Found:");
+                System.out.println("Found:"+P);
             }
             else {
                 System.out.println("Not Found");

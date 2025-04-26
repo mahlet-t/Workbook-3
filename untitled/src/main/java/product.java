@@ -30,3 +30,4 @@ public class product {
      return "Sku: "+sku+","+"Product Name: "+productName+","+"Price: "+price+","+"Department: "+department;}
     }
 
+
