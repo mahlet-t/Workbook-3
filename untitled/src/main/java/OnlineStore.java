@@ -6,26 +6,54 @@ import java.util.Scanner;
 public class OnlineStore {
     public static void main(String[] args) {
         Scanner input=new Scanner(System.in);
-        ArrayList<product> products=getInventory();
-        Cart cart=new Cart();
-        cart.addNewProduct(products,input);
-        cart.removeProduct(input);
-        cart.checkOut(input);
         System.out.println("well come to online store\n Choose number ");
         System.out.println("1 Display product");
         System.out.println("2 Display cart");
         System.out.println("3 Exit");
         int choose=input.nextInt();
         input.nextLine();
+        ArrayList<product> products=getInventory();
+        Cart cart=new Cart();
         switch (choose){
-            case 1:options(products,input);
-            case 2:
-
+            case 1:options(products,input);break;
+            case 2:cartDisplay(cart,products,input);break;
+            case 3:
+                System.out.println("Good Bye");
+            default:
+                System.out.println("Invalid input");
 
         }
 
 
+    }
+    public static void cartDisplay(Cart cart,ArrayList<product> products,Scanner input) {
+        boolean keepGoing = true;
+        while (keepGoing) {
+            System.out.println("\nChoose from the following");
+            System.out.println("1 Add item to cart");
+            System.out.println("2 remove item ");
+            System.out.println("3 checkout");
+            System.out.println("Exit");
+            int chooses = input.nextInt();
+            input.nextLine();
+            switch (chooses) {
+                case 1:
+                    cart.addNewProduct(products, input);
+                    break;
+                case 2:
+                    cart.removeProduct(input);
+                    break;
+                case 3:
+                    cart.checkOut(input);
+                    break;
+                case 4:
+                    keepGoing = false;
+                    break;
+                default:
+                    System.out.println("Invalid choice. Try again.");
 
+            }
+        }
     }
     public static void options(ArrayList<product>products,Scanner input){
         System.out.println("Choose");
@@ -48,12 +76,12 @@ public class OnlineStore {
 
     }
 
-
-
     public static ArrayList<product> getInventory() {
         ArrayList<product> products = new ArrayList<>();
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("../DataFiles/product.csv"));
+
+            BufferedReader reader = new BufferedReader(new FileReader("../DataFiles/products.csv"));
+            reader.readLine();
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split("\\|");
@@ -66,7 +94,8 @@ public class OnlineStore {
             reader.close();
             products.sort((p1, p2) -> p1.getProductName().compareToIgnoreCase(p2.getProductName()));
         } catch (Exception e) {
-            System.out.println("invalid input");
+            System.out.println("invalid input"+e.getMessage());
+
 
         }
         return products;
@@ -120,4 +149,6 @@ public class OnlineStore {
             }
         }
     }
+
+
 }

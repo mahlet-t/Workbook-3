@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class Cart {
 
-   private Map<product,Integer>cartItems=new HashMap<>();
+   private final Map<product,Integer>cartItems=new HashMap<>();
    public void addNewProduct(ArrayList<product> products, Scanner input){
       System.out.println("Enter product Name");
       String Name=input.nextLine();
@@ -66,8 +66,6 @@ public class Cart {
       else {
          System.out.println("Product not found in the cart");
       }
-
-
    }
 
    public void checkOut(Scanner input){
@@ -109,20 +107,11 @@ public class Cart {
          writer.close();
       }catch (IOException e){
          System.out.println("Error writing receipt:"+e.getMessage());
-         cartItems.clear();
 
-         checkOut(input);
       }
-   }
-   public static void cartDisplay(ArrayList<product> products,Scanner input) {
-      System.out.println("Choose from the following");
-      System.out.println("1 Add item to cart");
-      System.out.println("2 remove item ");
-      System.out.println("3checkout");
-      int choose = input.nextInt();
-      input.nextLine();
-
+      cartItems.clear();
 
 
    }
-}
+
+   }
