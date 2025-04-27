@@ -6,74 +6,94 @@ import java.util.Scanner;
 public class OnlineStore {
     public static void main(String[] args) {
         Scanner input=new Scanner(System.in);
+        ArrayList<product> products=getInventory();
+        Cart cart=new Cart();
+        boolean running=true;
+        while (running) {
         System.out.println("well come to online store\n Choose number ");
         System.out.println("1 Display product");
         System.out.println("2 Display cart");
         System.out.println("3 Exit");
         int choose=input.nextInt();
         input.nextLine();
-        ArrayList<product> products=getInventory();
-        Cart cart=new Cart();
-        switch (choose){
-            case 1:options(products,input);break;
-            case 2:cartDisplay(cart,products,input);break;
-            case 3:
-                System.out.println("Good Bye");
-            default:
-                System.out.println("Invalid input");
+            switch (choose) {
+                case 1:
+                    options(products, input);
+                    break;
+                case 2:
+                    cartDisplay(cart, products, input);
+                    break;
+                case 3:
+                    System.out.println("Good Bye");
+                    running=false;break;
+                default:
+                    System.out.println("Invalid ");
 
+            }
         }
-
 
     }
     public static void cartDisplay(Cart cart,ArrayList<product> products,Scanner input) {
-        boolean keepGoing = true;
-        while (keepGoing) {
+        boolean stayInCart = true;
+        while (stayInCart) {
             System.out.println("\nChoose from the following");
             System.out.println("1 Add item to cart");
             System.out.println("2 remove item ");
             System.out.println("3 checkout");
-            System.out.println("Exit");
+            System.out.println("4 Exit");
             int chooses = input.nextInt();
             input.nextLine();
-            switch (chooses) {
+                switch (chooses) {
+                    case 1:
+                        cart.addNewProduct(products, input);
+                        break;
+                    case 2:
+                        cart.removeProduct(input);
+                        break;
+                    case 3:
+                        cart.checkOut(input);
+                        break;
+                    case 4:
+                        stayInCart = false;
+                        break;
+                    default:
+                        System.out.println("Invalid choice. Try again.");
+
+                }
+            }
+    }
+    public static void options(ArrayList<product>products,Scanner input){
+        boolean stayInOption=true;
+        while (stayInOption) {
+            System.out.println("\nChoose");
+            System.out.println("1 list all product");
+            System.out.println("2 search by name");
+            System.out.println("3 search by price ");
+            System.out.println("4 search by department");
+            System.out.println("5 go back main menu");
+            int option = input.nextInt();
+            input.nextLine();
+            switch (option) {
                 case 1:
-                    cart.addNewProduct(products, input);
+                    listAllProduct(products);
                     break;
                 case 2:
-                    cart.removeProduct(input);
+                    SearchByName(products, input);
                     break;
                 case 3:
-                    cart.checkOut(input);
+                    searchByPrice(products, input);
                     break;
                 case 4:
-                    keepGoing = false;
+                    SearchByDepartment(products, input);
+                    break;
+                case 5:stayInOption=false;
                     break;
                 default:
-                    System.out.println("Invalid choice. Try again.");
+                    System.out.println("Invalid choice. Try again");
+
 
             }
         }
-    }
-    public static void options(ArrayList<product>products,Scanner input){
-        System.out.println("Choose");
-        System.out.println("1 list all product");
-        System.out.println("2 search by name");
-        System.out.println("3 search by price ");
-        System.out.println("4 search by department");
-        System.out.println("5 go back main menu");
-        int option=input.nextInt();
-        input.nextLine();
-        switch (option){
-            case 1:listAllProduct(products);break;
-            case 2:SearchByName(products,input);break;
-            case 3:searchByPrice(products,input);break;
-            case 4:SearchByDepartment(products,input);break;
-            case 5:options(products,input);break;
-
-
-        }
-
     }
 
     public static ArrayList<product> getInventory() {
@@ -108,47 +128,63 @@ public class OnlineStore {
         }
     }
     public static void SearchByName(ArrayList<product>products,Scanner input){
+        boolean found=false;
+        while (!found){
         System.out.println("Enter Product Name ");
         String name=input.nextLine();
-        for (product P:products)
-            if (P.getProductName().equalsIgnoreCase(name)){
-            System.out.println("Found: "+P);
-
+        for (product P:products) {
+            if (P.getProductName().equalsIgnoreCase(name)) {
+                System.out.println("Found: " + P);
+                found=true;
+                break;
             }
-
-
+        }
+        if (!found){
+            System.out.println("No product found");
+        }
+        }
     }
-    public static void searchByPrice(ArrayList<product>products,Scanner input){
+    public static void searchByPrice(ArrayList<product>products,Scanner input) {
+        boolean found = false;
+        while (!found) {
         System.out.println("Enter Max price");
-        double Max=input.nextDouble();
+        double Max = input.nextDouble();
         input.nextLine();
         System.out.println("Enter min price");
-        double Min=input.nextDouble();
+        double Min = input.nextDouble();
         input.nextLine();
-        for (product P:products){
-            double price=P.getPrice();
+            for (product P : products) {
+                double price = P.getPrice();
 
-            if (price<=Max&& price>=Min){
-                System.out.println("Found: "+P);
+                if (price <= Max && price >= Min) {
+                    System.out.println("Found: " + P);
+                    found = true;break;
+                }
             }
-            else {
-                System.out.println("Not Found");
+            if (!found) {
+                System.out.println("No product found in that price range.");
             }
-
         }
     }
-    public static void SearchByDepartment(ArrayList<product>products,Scanner input){
+    public static void SearchByDepartment(ArrayList<product>products,Scanner input) {
+        boolean found = false;
+        while (!found) {
         System.out.println("Enter Department");
-        String D=input.nextLine();
-        for (product P:products){
-            if (P.getDepartment().equalsIgnoreCase(D)){
-                System.out.println("Found:"+P);
+        String D = input.nextLine();
+
+            for (product P : products) {
+                if (P.getDepartment().equalsIgnoreCase(D)) {
+                    System.out.println("Found:" + P);
+                    found = true;break;
+                }
+
             }
-            else {
-                System.out.println("Not Found");
+            if (!found) {
+                System.out.println("No product found");
             }
+
         }
     }
-
-
 }
+
+
